@@ -2,7 +2,7 @@
 
 This is a simple C# console application that demonstrates how to:
 - Fetch data from a public REST API using `HttpClient`
-- Handle asynchronous code with `async`/`await`
+- Handle asynchronous code with `async`/`await`, `Task` and `Task.WhenAll`
 - Parse and pretty-print JSON using `System.Text.Json`
 
 The data source is the [Open-Meteo](https://open-meteo.com/) weather API, which returns temperature forecasts based on latitude and longitude.
@@ -32,3 +32,10 @@ The data source is the [Open-Meteo](https://open-meteo.com/) weather API, which 
 
    ```bash
    dotnet run
+
+
+## What I Learnt from This
+- Parallel async execution with Task.WhenAll()
+- How to handle HTTP errors using try/catch
+- JSON handling with JsonDocument and JsonSerializer
+- Writing reusable and modular code (DataFetcher, PrintToConsole)
