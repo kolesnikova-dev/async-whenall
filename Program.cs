@@ -2,7 +2,7 @@
 
 class Program
 {
-    private static readonly string[] fetchUrls = ["https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&timezone=auto&forecast_days=1"];
+    private static readonly string[] fetchUrls = ["https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&timezone=America%2FNew_York&forecast_days=1"];
     public static async Task Main(string[] args)
     {
         DataFetcher dataFetcher = new();

@@ -11,7 +11,7 @@ The data source is the [Open-Meteo](https://open-meteo.com/) weather API, which 
 
 ## Features
 
-- Fetches hourly temperature data for Berlin (latitude 52.52, longitude 13.41)
+- Fetches hourly temperature data for New York, USA.
 - Formats the response JSON into a readable format
 - Handles network errors gracefully
 - Uses modern C# 10+ syntax (e.g., target-typed `new()` and `JsonSerializer`)
