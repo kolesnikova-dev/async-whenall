@@ -5,21 +5,19 @@ class Program
     private static readonly string[] fetchUrls = ["https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m&timezone=America%2FNew_York&forecast_days=1", "https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=rain&timezone=America%2FNew_York&forecast_days=1"];
     public static async Task Main(string[] args)
     {
-        DataFetcher dataFetcher0 = new();
-        DataFetcher dataFetcher1 = new();
-
+        DataFetcher dataFetcher = new();
         Console.WriteLine("Welcome to the Data Fetcher.");
 
-        var task0 = dataFetcher0.Fetch(fetchUrls[0]);
-        var task1 = dataFetcher1.Fetch(fetchUrls[1]);
-        await Task.WhenAll(task0, task1);
+        var task0 = dataFetcher.Fetch(fetchUrls[0]);
+        var task1 = dataFetcher.Fetch(fetchUrls[1]);
 
-        var data0 = await task0;
-        var data1 = await task1;
+        var results = await Task.WhenAll(task0, task1);
+        
+        foreach (var result in results)
+        {
+            PrintToConsole(result);
+        }
 
-
-        PrintToConsole(data0);
-        PrintToConsole(data1);
 
     }
 
