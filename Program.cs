@@ -40,21 +40,22 @@ public class DataFetcher
     public async Task<List<string>> Fetch(string url)
     {
         using HttpClient client = new();
-       var returnData = new List<string>();
-       try
-            {
-                var response = await client.GetAsync(url);
-                response.EnsureSuccessStatusCode();
-                var dataJson = await response.Content.ReadAsStringAsync();
-                var doc = JsonDocument.Parse(dataJson);
-                 var prettified = JsonSerializer.Serialize(doc.RootElement, new JsonSerializerOptions { WriteIndented = true });
-                returnData.Add(prettified);
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine("Something went wrong with " + url + ". " + ex.Message);
-                throw;
-            }
+        List<string> returnData = new();
+        
+        try
+        {
+            var response = await client.GetAsync(url);
+            response.EnsureSuccessStatusCode();
+            var dataJson = await response.Content.ReadAsStringAsync();
+            var doc = JsonDocument.Parse(dataJson);
+            var prettified = JsonSerializer.Serialize(doc.RootElement, new JsonSerializerOptions { WriteIndented = true });
+            returnData.Add(prettified);
+        }
+        catch (HttpRequestException ex)
+        {
+            Console.WriteLine("Something went wrong with " + url + ". " + ex.Message);
+            throw;
+        }
 
         return returnData;
     }
