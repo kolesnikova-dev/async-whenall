@@ -8,10 +8,15 @@ class Program
         DataFetcher dataFetcher = new();
         Console.WriteLine("Welcome to the Data Fetcher.");
 
-        var task0 = dataFetcher.Fetch(fetchUrls[0]);
-        var task1 = dataFetcher.Fetch(fetchUrls[1]);
+        List<Task<List<string>>> tasks = new();
 
-        var results = await Task.WhenAll(task0, task1);
+        foreach (var fetchUrl in fetchUrls)
+        {
+            var task = dataFetcher.Fetch(fetchUrl);
+            tasks.Add(task);
+        }
+
+        List<string>[] results = await Task.WhenAll(tasks);
         
         foreach (var result in results)
         {
